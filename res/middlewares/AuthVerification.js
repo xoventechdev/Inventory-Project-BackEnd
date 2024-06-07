@@ -17,7 +17,6 @@ export const AuthVerified = (req, res, next) => {
   try {
     const decoded = DecodeToken(token);
     req.email = decoded.email;
-    req.user_id = decoded.user_id;
     next();
   } catch (error) {
     if (error instanceof JWT.TokenExpiredError) {

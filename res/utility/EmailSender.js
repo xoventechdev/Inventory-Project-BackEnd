@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-const SendMail = async (email, subject, message) => {
+export const SendMail = async (email, subject, message) => {
   const transporter = nodemailer.createTransport({
     host: "mail.teamrabbil.com",
     port: 25,
@@ -23,5 +23,3 @@ const SendMail = async (email, subject, message) => {
 
   return await transporter.sendMail(mailOptions);
 };
-
-export default SendMail;

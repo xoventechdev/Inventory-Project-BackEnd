@@ -1,17 +1,12 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
+const supplierSchema = new mongoose.Schema(
   {
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    firstName: {
+    userEmail: {
       type: String,
       required: true,
     },
-    lastName: {
+    name: {
       type: String,
       required: true,
     },
@@ -19,15 +14,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    password: {
+    email: {
       type: String,
-      required: true,
-      minlength: 6,
-      maxlength: 20,
+    },
+    address: {
+      type: String,
     },
     photo: {
       type: String,
-      required: true,
+    },
+    status: {
+      type: Number,
+      default: 1,
     },
   },
   {
@@ -36,4 +34,4 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-export const UserModel = mongoose.model("user", userSchema);
+export const SupplierModel = mongoose.model("suppliers", supplierSchema);
