@@ -1,12 +1,12 @@
 export const CreateService = async (req, model) => {
   try {
-    const nameMatch = { $regex: req.body.name, $options: "i" };
-    let checkExits = await model.aggregate([
-      { $match: { userEmail: req.email, name: nameMatch } },
-    ]);
-    if (checkExits.length > 0) {
-      return { status: "error", response: "This is already exists." };
+    if (!req.body || Object.keys(req.body).length === 0) {
+      return {
+        status: "error",
+        response: "No data found.",
+      };
     }
+
     req.body.userEmail = req.email;
     await model.create(req.body);
     return {

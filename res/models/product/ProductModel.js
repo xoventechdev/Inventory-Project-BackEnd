@@ -1,26 +1,32 @@
 import mongoose from "mongoose";
 
-const expenseSchema = new mongoose.Schema(
+const productSchema = new mongoose.Schema(
   {
     userEmail: {
       type: String,
       required: true,
     },
-    typeID: {
+    categoryId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "expense_types",
+      ref: "categories",
+      required: true,
+    },
+    brandId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "brands",
       required: true,
     },
     name: {
       type: String,
       required: true,
     },
-    amount: {
+    unit: {
       type: Number,
       required: true,
     },
-    note: {
+    details: {
       type: String,
+      required: true,
     },
   },
   {
@@ -29,4 +35,4 @@ const expenseSchema = new mongoose.Schema(
   }
 );
 
-export const ExpenseModel = mongoose.model("expenses", expenseSchema);
+export const ProductModel = mongoose.model("products", productSchema);

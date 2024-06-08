@@ -6,7 +6,6 @@ export const DropDownService = async (req, model, project) => {
         $project: project,
       },
     ]);
-    console.log(data);
     return { status: "success", response: data };
   } catch (error) {
     return { status: "error", response: error.message };
