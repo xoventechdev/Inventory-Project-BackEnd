@@ -1,10 +1,13 @@
 import { SupplierModel } from "../models/SupplierModel.js";
+import { PurchaseModel } from "../models/purchase/PurchaseModel.js";
 import { CreateService } from "../services/common/CreateService.js";
 import { DeleteService } from "../services/common/DeleteService.js";
 import { DropDownService } from "../services/common/DropDownService.js";
 import { ListService } from "../services/common/ListService.js";
 import { StatusService } from "../services/common/StatusService.js";
 import { UpdateService } from "../services/common/UpdateService.js";
+import { CheckAssociateService } from "../services/common/CheckAssociateService.js";
+import mongoose from "mongoose";
 
 export const SupplierCreate = async (req, res) => {
   let data = await CreateService(req, SupplierModel);
@@ -34,8 +37,21 @@ export const SupplierDropDown = async (req, res) => {
 };
 
 export const SupplierDelete = async (req, res) => {
-  let data = await DeleteService(req, SupplierModel);
-  res.status(200).json(data);
+  const ObjectId = mongoose.Types.ObjectId;
+  let checkItem = await CheckAssociateService(
+    { supplierId: new ObjectId(req.params.id) },
+    PurchaseModel
+  );
+  if (checkItem) {
+    res.status(400).json({
+      status: "warning",
+      response:
+        "Can not delete this item because it is associated with Purchase items",
+    });
+  } else {
+    let data = await DeleteService(req, SupplierModel);
+    res.status(200).json(data);
+  }
 };
 
 export const SupplierStatus = async (req, res) => {

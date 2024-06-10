@@ -3,6 +3,8 @@ import { CreateService } from "../../services/common/CreateService.js";
 import { DeleteService } from "../../services/common/DeleteService.js";
 import { ListWithOneJoinService } from "../../services/common/ListWithOneJoinService.js";
 import { UpdateService } from "../../services/common/UpdateService.js";
+import { ExpenseReportService } from "../../services/report/ExpenseReportService.js";
+import { ExpenseSummaryService } from "../../services/summary/ExpenseSummaryService.js";
 
 export const ExpenseCreate = async (req, res) => {
   let data = await CreateService(req, ExpenseModel);
@@ -41,5 +43,15 @@ export const ExpenseList = async (req, res) => {
 
 export const ExpenseDelete = async (req, res) => {
   let data = await DeleteService(req, ExpenseModel);
+  res.status(200).json(data);
+};
+
+export const ExpenseReport = async (req, res) => {
+  let data = await ExpenseReportService(req);
+  res.status(200).json(data);
+};
+
+export const ExpenseSummary = async (req, res) => {
+  let data = await ExpenseSummaryService(req);
   res.status(200).json(data);
 };

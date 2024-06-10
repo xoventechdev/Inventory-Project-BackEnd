@@ -1,10 +1,13 @@
 import { BrandModel } from "../models/BrandModel.js";
+import { ProductModel } from "../models/product/ProductModel.js";
+import { CheckAssociateService } from "../services/common/CheckAssociateService.js";
 import { CreateService } from "../services/common/CreateService.js";
 import { DeleteService } from "../services/common/DeleteService.js";
 import { DropDownService } from "../services/common/DropDownService.js";
 import { ListService } from "../services/common/ListService.js";
 import { StatusService } from "../services/common/StatusService.js";
 import { UpdateService } from "../services/common/UpdateService.js";
+import mongoose from "mongoose";
 
 export const BrandCreate = async (req, res) => {
   let data = await CreateService(req, BrandModel);
@@ -29,8 +32,21 @@ export const BrandDropDown = async (req, res) => {
 };
 
 export const BrandDelete = async (req, res) => {
-  let data = await DeleteService(req, BrandModel);
-  res.status(200).json(data);
+  const ObjectId = mongoose.Types.ObjectId;
+  let checkItem = await CheckAssociateService(
+    { brandId: new ObjectId(req.params.id) },
+    ProductModel
+  );
+  if (checkItem) {
+    res.status(400).json({
+      status: "warning",
+      response:
+        "Can not delete this item because it is associated with Product items",
+    });
+  } else {
+    let data = await DeleteService(req, BrandModel);
+    res.status(200).json(data);
+  }
 };
 
 export const BrandStatus = async (req, res) => {

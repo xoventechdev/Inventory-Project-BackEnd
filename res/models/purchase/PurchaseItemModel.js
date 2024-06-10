@@ -1,36 +1,32 @@
 import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema(
+const purchaseItemSchema = new mongoose.Schema(
   {
     userEmail: {
       type: String,
       required: true,
     },
-    categoryId: {
+    productId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "categories",
+      ref: "products",
       required: true,
     },
-    brandId: {
+    purchaseId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "brands",
+      ref: "purchases",
       required: true,
     },
-    name: {
-      type: String,
-      required: true,
-    },
-    unit: {
+    qty: {
       type: Number,
       required: true,
     },
-    details: {
-      type: String,
+    unitCost: {
+      type: Number,
       required: true,
     },
-    status: {
+    total: {
       type: Number,
-      default: 1,
+      required: true,
     },
   },
   {
@@ -39,4 +35,7 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-export const ProductModel = mongoose.model("products", productSchema);
+export const PurchaseItemModel = mongoose.model(
+  "purchases_item",
+  purchaseItemSchema
+);

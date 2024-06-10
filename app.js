@@ -16,6 +16,9 @@ import SupplierRoutes from "./res/routers/SupplierRoutes.js";
 import ExpenseRoutes from "./res/routers/ExpenseRoutes.js";
 import ExpenseTypeRoutes from "./res/routers/ExpenseTypeRoutes.js";
 import ProductRoutes from "./res/routers/ProductRoutes.js";
+import PurchaseRoutes from "./res/routers/PurchaseRoutes.js";
+import SalesRoutes from "./res/routers/SalesRoutes.js";
+import ReturnRoutes from "./res/routers/ReturnRoutes.js";
 
 const app = express();
 
@@ -53,6 +56,9 @@ app.use("/api/v1/supplier", SupplierRoutes);
 app.use("/api/v1/expense-type", ExpenseTypeRoutes);
 app.use("/api/v1/expense", ExpenseRoutes);
 app.use("/api/v1/product", ProductRoutes);
+app.use("/api/v1/purchase", PurchaseRoutes);
+app.use("/api/v1/sales", SalesRoutes);
+app.use("/api/v1/return", ReturnRoutes);
 
 app.get("/", (req, res) => {
   res.json({
