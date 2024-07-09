@@ -11,7 +11,17 @@ export const UserLogInService = async (req, model) => {
       );
       if (isPasswordValid) {
         let token = EncodeToken(user.email);
-        return { status: "success", response: token };
+        return {
+          status: "success",
+          token: token,
+          response: {
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            mobile: user.mobile,
+            photo: user.photo,
+          },
+        };
       } else {
         return {
           status: "warning",

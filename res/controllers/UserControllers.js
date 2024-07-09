@@ -26,7 +26,7 @@ export const UserEmailVerify = async (req, res) => {
 export const UserLogIn = async (req, res) => {
   let data = await UserLogInService(req, UserModel);
   if (data.status === "success") {
-    res.cookie("token", data.response, {
+    res.cookie("token", data.token, {
       httpOnly: true,
       secure: true,
       maxAge: 24 * 60 * 60 * 1000,
