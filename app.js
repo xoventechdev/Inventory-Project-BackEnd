@@ -24,7 +24,14 @@ const app = express();
 
 dotenv.config();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "token"],
+  })
+);
 app.use(expressMongoSanitize());
 app.use(helmet());
 app.use(hpp());
