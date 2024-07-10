@@ -2,6 +2,7 @@ import { PurchaseItemModel } from "../../models/purchase/PurchaseItemModel.js";
 import { PurchaseModel } from "../../models/purchase/PurchaseModel.js";
 import { CreateParentChildServices } from "../../services/common/CreateParentChildServices.js";
 import { DeleteParentChildService } from "../../services/common/DeleteParentChildService.js";
+import { DetailService } from "../../services/common/DetailService.js";
 import { ListWithOneJoinService } from "../../services/common/ListWithOneJoinService.js";
 import { ReportService } from "../../services/common/ReportService.js";
 import { SummaryService } from "../../services/common/SummaryService.js";
@@ -60,5 +61,10 @@ export const PurchaseReport = async (req, res) => {
 
 export const PurchaseSummary = async (req, res) => {
   let data = await SummaryService(req, PurchaseModel);
+  res.status(200).json(data);
+};
+
+export const PurchaseDetail = async (req, res) => {
+  let data = await DetailService(req, PurchaseModel);
   res.status(200).json(data);
 };

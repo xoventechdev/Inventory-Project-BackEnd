@@ -3,6 +3,7 @@ import { ProductModel } from "../models/product/ProductModel.js";
 import { CheckAssociateService } from "../services/common/CheckAssociateService.js";
 import { CreateService } from "../services/common/CreateService.js";
 import { DeleteService } from "../services/common/DeleteService.js";
+import { DetailService } from "../services/common/DetailService.js";
 import { DropDownService } from "../services/common/DropDownService.js";
 import { ListService } from "../services/common/ListService.js";
 import { StatusService } from "../services/common/StatusService.js";
@@ -51,5 +52,10 @@ export const BrandDelete = async (req, res) => {
 
 export const BrandStatus = async (req, res) => {
   let data = await StatusService(req, BrandModel);
+  res.status(200).json(data);
+};
+
+export const BrandDetail = async (req, res) => {
+  let data = await DetailService(req, BrandModel);
   res.status(200).json(data);
 };

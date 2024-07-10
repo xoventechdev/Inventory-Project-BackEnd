@@ -3,6 +3,7 @@ import { AuthVerified } from "../middlewares/AuthVerification.js";
 import {
   CategoryCreate,
   CategoryDelete,
+  CategoryDetail,
   CategoryDropDown,
   CategoryList,
   CategoryStatus,
@@ -12,6 +13,7 @@ import {
 const CategoriesRoutes = Router();
 
 CategoriesRoutes.post("/create", AuthVerified, CategoryCreate);
+CategoriesRoutes.get("/detail/:id", AuthVerified, CategoryDetail);
 CategoriesRoutes.put("/update/:id", AuthVerified, CategoryUpdate);
 CategoriesRoutes.get("/dropdownlist", AuthVerified, CategoryDropDown);
 CategoriesRoutes.get(

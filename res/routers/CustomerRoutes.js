@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   CustomerCreate,
   CustomerDelete,
+  CustomerDetail,
   CustomerDropDown,
   CustomerList,
   CustomerStatus,
@@ -12,6 +13,7 @@ import { AuthVerified } from "../middlewares/AuthVerification.js";
 const CustomerRoutes = Router();
 
 CustomerRoutes.post("/create", AuthVerified, CustomerCreate);
+CustomerRoutes.get("/detail/:id", AuthVerified, CustomerDetail);
 CustomerRoutes.put("/update/:id", AuthVerified, CustomerUpdate);
 CustomerRoutes.get("/dropdownlist", AuthVerified, CustomerDropDown);
 CustomerRoutes.get(

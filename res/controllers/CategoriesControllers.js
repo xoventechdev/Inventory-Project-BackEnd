@@ -8,6 +8,7 @@ import { StatusService } from "../services/common/StatusService.js";
 import { UpdateService } from "../services/common/UpdateService.js";
 import { CheckAssociateService } from "../services/common/CheckAssociateService.js";
 import mongoose from "mongoose";
+import { DetailService } from "../services/common/DetailService.js";
 
 export const CategoryCreate = async (req, res) => {
   let data = await CreateService(req, CategoriesModel);
@@ -51,5 +52,10 @@ export const CategoryDelete = async (req, res) => {
 
 export const CategoryStatus = async (req, res) => {
   let data = await StatusService(req, CategoriesModel);
+  res.status(200).json(data);
+};
+
+export const CategoryDetail = async (req, res) => {
+  let data = await DetailService(req, CategoriesModel);
   res.status(200).json(data);
 };

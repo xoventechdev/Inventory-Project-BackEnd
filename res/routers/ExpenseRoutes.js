@@ -3,6 +3,7 @@ import { AuthVerified } from "../middlewares/AuthVerification.js";
 import {
   ExpenseCreate,
   ExpenseDelete,
+  ExpenseDetail,
   ExpenseList,
   ExpenseReport,
   ExpenseSummary,
@@ -12,6 +13,7 @@ import {
 const ExpenseRoutes = new Router();
 
 ExpenseRoutes.post("/create", AuthVerified, ExpenseCreate);
+ExpenseRoutes.get("/detail/:id", AuthVerified, ExpenseDetail);
 ExpenseRoutes.put("/update/:id", AuthVerified, ExpenseUpdate);
 ExpenseRoutes.get(
   "/tableList/:pageNo/:perPage/:searchKeyword",

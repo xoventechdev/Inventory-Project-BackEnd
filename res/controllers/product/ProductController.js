@@ -10,6 +10,7 @@ import { StatusService } from "../../services/common/StatusService.js";
 import { UpdateService } from "../../services/common/UpdateService.js";
 import { CheckAssociateService } from "../../services/common/CheckAssociateService.js";
 import mongoose from "mongoose";
+import { DetailService } from "../../services/common/DetailService.js";
 
 export const ProductCreate = async (req, res) => {
   let data = await CreateService(req, ProductModel);
@@ -101,5 +102,10 @@ export const ProductDelete = async (req, res) => {
 
 export const ProductStatus = async (req, res) => {
   let data = await StatusService(req, ProductModel);
+  res.status(200).json(data);
+};
+
+export const ProductDetail = async (req, res) => {
+  let data = await DetailService(req, ProductModel);
   res.status(200).json(data);
 };

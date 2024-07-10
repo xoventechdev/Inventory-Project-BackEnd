@@ -2,6 +2,7 @@ import { ReturnItemModel } from "../../models/return/ReturnItemModel.js";
 import { ReturnModel } from "../../models/return/ReturnModel.js";
 import { CreateParentChildServices } from "../../services/common/CreateParentChildServices.js";
 import { DeleteParentChildService } from "../../services/common/DeleteParentChildService.js";
+import { DetailService } from "../../services/common/DetailService.js";
 import { ListWithOneJoinService } from "../../services/common/ListWithOneJoinService.js";
 import { ReportService } from "../../services/common/ReportService.js";
 import { SummaryService } from "../../services/common/SummaryService.js";
@@ -60,5 +61,10 @@ export const ReturnReport = async (req, res) => {
 
 export const ReturnSummary = async (req, res) => {
   let data = await SummaryService(req, ReturnModel);
+  res.status(200).json(data);
+};
+
+export const ReturnDetail = async (req, res) => {
+  let data = await DetailService(req, ReturnModel);
   res.status(200).json(data);
 };

@@ -3,6 +3,7 @@ import { AuthVerified } from "../middlewares/AuthVerification.js";
 import {
   ExpenseTypeCreate,
   ExpenseTypeDelete,
+  ExpenseTypeDetail,
   ExpenseTypeDropDown,
   ExpenseTypeList,
   ExpenseTypeStatus,
@@ -12,6 +13,7 @@ import {
 const ExpenseTypeRoutes = new Router();
 
 ExpenseTypeRoutes.post("/create", AuthVerified, ExpenseTypeCreate);
+ExpenseTypeRoutes.get("/detail/:id", AuthVerified, ExpenseTypeDetail);
 ExpenseTypeRoutes.put("/update/:id", AuthVerified, ExpenseTypeUpdate);
 ExpenseTypeRoutes.get("/dropdownlist", AuthVerified, ExpenseTypeDropDown);
 ExpenseTypeRoutes.get(

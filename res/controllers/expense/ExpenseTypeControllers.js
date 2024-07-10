@@ -8,6 +8,7 @@ import { StatusService } from "../../services/common/StatusService.js";
 import { UpdateService } from "../../services/common/UpdateService.js";
 import { CheckAssociateService } from "../../services/common/CheckAssociateService.js";
 import mongoose from "mongoose";
+import { DetailService } from "../../services/common/DetailService.js";
 
 export const ExpenseTypeCreate = async (req, res) => {
   let data = await CreateService(req, ExpenseTypeModel);
@@ -51,5 +52,10 @@ export const ExpenseTypeDelete = async (req, res) => {
 
 export const ExpenseTypeStatus = async (req, res) => {
   let data = await StatusService(req, ExpenseTypeModel);
+  res.status(200).json(data);
+};
+
+export const ExpenseTypeDetail = async (req, res) => {
+  let data = await DetailService(req, ExpenseTypeModel);
   res.status(200).json(data);
 };

@@ -3,6 +3,7 @@ import { AuthVerified } from "../middlewares/AuthVerification.js";
 import {
   BrandCreate,
   BrandDelete,
+  BrandDetail,
   BrandDropDown,
   BrandList,
   BrandStatus,
@@ -12,6 +13,7 @@ import {
 const BrandRoutes = new Router();
 
 BrandRoutes.post("/create", AuthVerified, BrandCreate);
+BrandRoutes.get("/detail/:id", AuthVerified, BrandDetail);
 BrandRoutes.put("/update/:id", AuthVerified, BrandUpdate);
 BrandRoutes.get("/dropdownlist", AuthVerified, BrandDropDown);
 BrandRoutes.get(

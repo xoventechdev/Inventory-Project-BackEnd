@@ -3,6 +3,7 @@ import { AuthVerified } from "../middlewares/AuthVerification.js";
 import {
   ProductCreate,
   ProductDelete,
+  ProductDetail,
   ProductDropDown,
   ProductList,
   ProductStatus,
@@ -12,6 +13,7 @@ import {
 const ProductRoutes = new Router();
 
 ProductRoutes.post("/create", AuthVerified, ProductCreate);
+ProductRoutes.get("/detail/:id", AuthVerified, ProductDetail);
 ProductRoutes.put("/update/:id", AuthVerified, ProductUpdate);
 ProductRoutes.get("/dropdownlist", AuthVerified, ProductDropDown);
 ProductRoutes.get(

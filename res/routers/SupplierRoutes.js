@@ -3,6 +3,7 @@ import { AuthVerified } from "../middlewares/AuthVerification.js";
 import {
   SupplierCreate,
   SupplierDelete,
+  SupplierDetail,
   SupplierDropDown,
   SupplierList,
   SupplierStatus,
@@ -12,6 +13,7 @@ import {
 const SupplierRoutes = Router();
 
 SupplierRoutes.post("/create", AuthVerified, SupplierCreate);
+SupplierRoutes.get("/detail/:id", AuthVerified, SupplierDetail);
 SupplierRoutes.put("/update/:id", AuthVerified, SupplierUpdate);
 SupplierRoutes.get("/dropdownlist", AuthVerified, SupplierDropDown);
 SupplierRoutes.get(
