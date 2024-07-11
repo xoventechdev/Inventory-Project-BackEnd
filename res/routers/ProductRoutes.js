@@ -14,7 +14,7 @@ const ProductRoutes = new Router();
 
 ProductRoutes.post("/create", AuthVerified, ProductCreate);
 ProductRoutes.get("/detail/:id", AuthVerified, ProductDetail);
-ProductRoutes.put("/update/:id", AuthVerified, ProductUpdate);
+ProductRoutes.post("/update/:id", AuthVerified, ProductUpdate);
 ProductRoutes.get("/dropdownlist", AuthVerified, ProductDropDown);
 ProductRoutes.get(
   "/tableList/:pageNo/:perPage/:searchKeyword",

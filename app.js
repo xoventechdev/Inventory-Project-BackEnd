@@ -41,7 +41,7 @@ app.use(express.urlencoded({ limit: "50mb" }));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 1000,
 });
 app.use(limiter);
 

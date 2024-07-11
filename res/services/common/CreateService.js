@@ -14,6 +14,6 @@ export const CreateService = async (req, model) => {
       response: `Item created successfully.`,
     };
   } catch (error) {
-    return { status: "error", response: error.message };
+    return { status: "error", response: error };
   }
 };

@@ -1,6 +1,5 @@
 export const UpdateService = async (req, model) => {
   try {
-    console.log(req.body);
     if (!req.body || Object.keys(req.body).length === 0) {
       return {
         status: "error",

@@ -18,6 +18,6 @@ UserRoutes.get("/email-verify/:email", UserEmailVerify);
 UserRoutes.get("/otp-verify/:email/:otp", UserOTPVerify);
 UserRoutes.post("/pass-reset", UserPassReset);
 UserRoutes.get("/details", AuthVerified, UserDetails);
-UserRoutes.put("/update", AuthVerified, UserUpdate);
+UserRoutes.post("/update", AuthVerified, UserUpdate);
 
 export default UserRoutes;

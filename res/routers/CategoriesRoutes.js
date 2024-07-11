@@ -14,7 +14,7 @@ const CategoriesRoutes = Router();
 
 CategoriesRoutes.post("/create", AuthVerified, CategoryCreate);
 CategoriesRoutes.get("/detail/:id", AuthVerified, CategoryDetail);
-CategoriesRoutes.put("/update/:id", AuthVerified, CategoryUpdate);
+CategoriesRoutes.post("/update/:id", AuthVerified, CategoryUpdate);
 CategoriesRoutes.get("/dropdownlist", AuthVerified, CategoryDropDown);
 CategoriesRoutes.get(
   "/tableList/:pageNo/:perPage/:searchKeyword",

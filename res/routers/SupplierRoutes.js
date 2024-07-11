@@ -14,7 +14,7 @@ const SupplierRoutes = Router();
 
 SupplierRoutes.post("/create", AuthVerified, SupplierCreate);
 SupplierRoutes.get("/detail/:id", AuthVerified, SupplierDetail);
-SupplierRoutes.put("/update/:id", AuthVerified, SupplierUpdate);
+SupplierRoutes.post("/update/:id", AuthVerified, SupplierUpdate);
 SupplierRoutes.get("/dropdownlist", AuthVerified, SupplierDropDown);
 SupplierRoutes.get(
   "/tableList/:pageNo/:perPage/:searchKeyword",

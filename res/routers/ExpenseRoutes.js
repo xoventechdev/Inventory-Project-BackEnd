@@ -14,7 +14,7 @@ const ExpenseRoutes = new Router();
 
 ExpenseRoutes.post("/create", AuthVerified, ExpenseCreate);
 ExpenseRoutes.get("/detail/:id", AuthVerified, ExpenseDetail);
-ExpenseRoutes.put("/update/:id", AuthVerified, ExpenseUpdate);
+ExpenseRoutes.post("/update/:id", AuthVerified, ExpenseUpdate);
 ExpenseRoutes.get(
   "/tableList/:pageNo/:perPage/:searchKeyword",
   AuthVerified,

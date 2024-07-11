@@ -14,7 +14,7 @@ const BrandRoutes = new Router();
 
 BrandRoutes.post("/create", AuthVerified, BrandCreate);
 BrandRoutes.get("/detail/:id", AuthVerified, BrandDetail);
-BrandRoutes.put("/update/:id", AuthVerified, BrandUpdate);
+BrandRoutes.post("/update/:id", AuthVerified, BrandUpdate);
 BrandRoutes.get("/dropdownlist", AuthVerified, BrandDropDown);
 BrandRoutes.get(
   "/tableList/:pageNo/:perPage/:searchKeyword",
