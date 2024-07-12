@@ -1,5 +1,5 @@
-import { OTPModel } from "../models/User/OTPModel.js";
-import { UserModel } from "../models/User/UserModel.js";
+import { OTPModel } from "../models/user/OTPModel.js";
+import { UserModel } from "../models/user/UserModel.js";
 import { UserCreateService } from "../services/user/UserCreateService.js";
 import { UserDetailsService } from "../services/user/UserDetailsService.js";
 import { UserEmailVerifyService } from "../services/user/UserEmailVerifyService.js";
