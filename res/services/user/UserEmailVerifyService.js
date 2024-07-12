@@ -1,4 +1,4 @@
-import { OTPModel } from "../../models/User/OTPModel.js";
+import { OTPModel } from "../../models/user/OTPModel.js";
 import { SendMail } from "../../utility/EmailSender.js";
 
 export const UserEmailVerifyService = async (req, model) => {

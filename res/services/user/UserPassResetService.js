@@ -1,4 +1,4 @@
-import { OTPModel } from "../../models/User/OTPModel.js";
+import { OTPModel } from "../../models/user/OTPModel.js";
 import bcrypt from "bcrypt";
 
 export const UserPassResetService = async (req, model) => {
