@@ -10,6 +10,7 @@ export const UserPassResetService = async (req, model) => {
     if (usedOTP.length > 0) {
       let hash = await bcrypt.hash(newPass, 10);
       await model.findOneAndUpdate({ email }, { password: hash });
+
       return { status: "success", response: "Password reset successfully" };
     } else {
       return { status: "warning", response: "Invalid request. Try again." };
