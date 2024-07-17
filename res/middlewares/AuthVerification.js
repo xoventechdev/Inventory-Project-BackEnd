@@ -7,6 +7,7 @@ export const AuthVerified = (req, res, next) => {
     token = req.cookies.token;
   }
 
+  console.log(token);
   if (!token) {
     return res.status(401).json({
       status: "warning",

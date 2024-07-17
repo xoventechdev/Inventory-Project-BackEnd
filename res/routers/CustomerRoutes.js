@@ -22,6 +22,6 @@ CustomerRoutes.get(
   CustomerList
 );
 CustomerRoutes.delete("/delete/:id", AuthVerified, CustomerDelete);
-CustomerRoutes.put("/statusUpdate/:id", AuthVerified, CustomerStatus);
+CustomerRoutes.get("/statusUpdate/:id", AuthVerified, CustomerStatus);
 
 export default CustomerRoutes;

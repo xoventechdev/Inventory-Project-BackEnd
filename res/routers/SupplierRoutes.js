@@ -22,6 +22,6 @@ SupplierRoutes.get(
   SupplierList
 );
 SupplierRoutes.delete("/delete/:id", AuthVerified, SupplierDelete);
-SupplierRoutes.put("/statusUpdate/:id", AuthVerified, SupplierStatus);
+SupplierRoutes.get("/statusUpdate/:id", AuthVerified, SupplierStatus);
 
 export default SupplierRoutes;

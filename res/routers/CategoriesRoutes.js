@@ -22,6 +22,6 @@ CategoriesRoutes.get(
   CategoryList
 );
 CategoriesRoutes.delete("/delete/:id", AuthVerified, CategoryDelete);
-CategoriesRoutes.put("/statusUpdate/:id", AuthVerified, CategoryStatus);
+CategoriesRoutes.get("/statusUpdate/:id", AuthVerified, CategoryStatus);
 
 export default CategoriesRoutes;

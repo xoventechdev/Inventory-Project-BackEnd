@@ -1,8 +1,10 @@
+import mongoose from "mongoose";
 export const StatusService = async (req, model) => {
+  const ObjectId = mongoose.Types.ObjectId;
   try {
     const item = await model.findOne({
       userEmail: req.email,
-      _id: req.params.id,
+      _id: new ObjectId(req.params.id),
     });
     if (item) {
       const newStatus = item.status === 0 ? 1 : 0;

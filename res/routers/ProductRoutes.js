@@ -22,6 +22,6 @@ ProductRoutes.get(
   ProductList
 );
 ProductRoutes.delete("/delete/:id", AuthVerified, ProductDelete);
-ProductRoutes.put("/statusUpdate/:id", AuthVerified, ProductStatus);
+ProductRoutes.get("/statusUpdate/:id", AuthVerified, ProductStatus);
 
 export default ProductRoutes;

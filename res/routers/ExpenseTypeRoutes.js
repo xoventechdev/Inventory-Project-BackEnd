@@ -22,6 +22,6 @@ ExpenseTypeRoutes.get(
   ExpenseTypeList
 );
 ExpenseTypeRoutes.delete("/delete/:id", AuthVerified, ExpenseTypeDelete);
-ExpenseTypeRoutes.put("/statusUpdate/:id", AuthVerified, ExpenseTypeStatus);
+ExpenseTypeRoutes.get("/statusUpdate/:id", AuthVerified, ExpenseTypeStatus);
 
 export default ExpenseTypeRoutes;

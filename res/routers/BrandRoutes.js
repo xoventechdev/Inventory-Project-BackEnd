@@ -22,6 +22,6 @@ BrandRoutes.get(
   BrandList
 );
 BrandRoutes.delete("/delete/:id", AuthVerified, BrandDelete);
-BrandRoutes.put("/statusUpdate/:id", AuthVerified, BrandStatus);
+BrandRoutes.get("/statusUpdate/:id", AuthVerified, BrandStatus);
 
 export default BrandRoutes;
