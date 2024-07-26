@@ -17,7 +17,7 @@ PurchaseRoutes.get(
   PurchaseList
 );
 PurchaseRoutes.delete("/delete/:id", AuthVerified, PurchaseDelete);
-PurchaseRoutes.get("/report", AuthVerified, PurchaseReport);
+PurchaseRoutes.post("/report", AuthVerified, PurchaseReport);
 PurchaseRoutes.get("/summary", AuthVerified, PurchaseSummary);
 
 export default PurchaseRoutes;

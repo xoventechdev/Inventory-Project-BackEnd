@@ -18,7 +18,7 @@ ReturnRoutes.get(
   ReturnList
 );
 ReturnRoutes.delete("/delete/:id", AuthVerified, ReturnDelete);
-ReturnRoutes.get("/report", AuthVerified, ReturnReport);
+ReturnRoutes.post("/report", AuthVerified, ReturnReport);
 ReturnRoutes.get("/summary", AuthVerified, ReturnSummary);
 
 export default ReturnRoutes;

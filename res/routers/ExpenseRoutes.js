@@ -21,7 +21,7 @@ ExpenseRoutes.get(
   ExpenseList
 );
 ExpenseRoutes.delete("/delete/:id", AuthVerified, ExpenseDelete);
-ExpenseRoutes.get("/report", AuthVerified, ExpenseReport);
+ExpenseRoutes.post("/report", AuthVerified, ExpenseReport);
 ExpenseRoutes.get("/summary", AuthVerified, ExpenseSummary);
 
 export default ExpenseRoutes;

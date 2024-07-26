@@ -17,7 +17,7 @@ SalesRoutes.get(
   SalesList
 );
 SalesRoutes.delete("/delete/:id", AuthVerified, SalesDelete);
-SalesRoutes.get("/report", AuthVerified, SalesReport);
+SalesRoutes.post("/report", AuthVerified, SalesReport);
 SalesRoutes.get("/summary", AuthVerified, SalesSummary);
 
 export default SalesRoutes;
