@@ -18,7 +18,7 @@ export const ExpenseReportService = async (req) => {
             {
               $group: {
                 _id: 0,
-                total: { $sum: "$total" },
+                total: { $sum: "$amount" },
               },
             },
           ],
