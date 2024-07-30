@@ -1,4 +1,4 @@
-import { SalesModel } from "../../models/sales/SalesModel";
+import { SalesModel } from "../../models/sales/SalesModel.js";
 
 export const SalesSummaryService = async (req) => {
   try {
