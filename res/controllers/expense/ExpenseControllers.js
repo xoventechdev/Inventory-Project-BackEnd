@@ -50,7 +50,6 @@ export const ExpenseDelete = async (req, res) => {
 
 export const ExpenseReport = async (req, res) => {
   let data = await ExpenseReportService(req);
-  // let data = await ReportService(req, ExpenseModel);
   res.status(200).json(data);
 };
 

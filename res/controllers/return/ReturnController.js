@@ -6,6 +6,7 @@ import { DetailService } from "../../services/common/DetailService.js";
 import { ListWithOneJoinService } from "../../services/common/ListWithOneJoinService.js";
 import { ReportService } from "../../services/common/ReportService.js";
 import { SummaryService } from "../../services/common/SummaryService.js";
+import { ReturnSummaryService } from "../../services/summary/ReturnSummaryService.js";
 
 export const ReturnCreate = async (req, res) => {
   let data = await CreateParentChildServices(
@@ -60,7 +61,7 @@ export const ReturnReport = async (req, res) => {
 };
 
 export const ReturnSummary = async (req, res) => {
-  let data = await SummaryService(req, ReturnModel);
+  let data = await ReturnSummaryService(req);
   res.status(200).json(data);
 };
 
