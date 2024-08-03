@@ -7,8 +7,9 @@ export const DeleteParentChildService = async (
   joinProperty
 ) => {
   const session = await mongoose.startSession();
+  session.startTransaction();
+
   try {
-    await session.abortTransaction();
     let deleteId = req.params.id;
     let userEmail = req.email;
 
