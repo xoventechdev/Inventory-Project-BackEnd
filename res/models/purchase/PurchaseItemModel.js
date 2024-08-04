@@ -36,6 +36,6 @@ const purchaseItemSchema = new mongoose.Schema(
 );
 
 export const PurchaseItemModel = mongoose.model(
-  "purchases_item",
+  "purchases_items",
   purchaseItemSchema
 );

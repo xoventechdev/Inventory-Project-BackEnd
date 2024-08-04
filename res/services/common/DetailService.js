@@ -9,8 +9,7 @@ export const DetailService = async (req, model) => {
           userEmail: req.email,
           _id: new ObjectId(req.params.id),
         },
-      }
-      
+      },
     ]);
     if (item) {
       return { status: "success", response: item[0] };

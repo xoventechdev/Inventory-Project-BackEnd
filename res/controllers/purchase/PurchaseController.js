@@ -2,6 +2,7 @@ import { PurchaseItemModel } from "../../models/purchase/PurchaseItemModel.js";
 import { PurchaseModel } from "../../models/purchase/PurchaseModel.js";
 import { CreateParentChildServices } from "../../services/common/CreateParentChildServices.js";
 import { DeleteParentChildService } from "../../services/common/DeleteParentChildService.js";
+import { DetailParentChildServices } from "../../services/common/DetailParentChildServices.js";
 import { DetailService } from "../../services/common/DetailService.js";
 import { ListWithOneJoinService } from "../../services/common/ListWithOneJoinService.js";
 import { ReportService } from "../../services/common/ReportService.js";
@@ -66,6 +67,27 @@ export const PurchaseSummary = async (req, res) => {
 };
 
 export const PurchaseDetail = async (req, res) => {
-  let data = await DetailService(req, PurchaseModel);
+  let joinStage1 = {
+    $lookup: {
+      from: "purchases_items",
+      localField: "_id",
+      foreignField: "purchaseId",
+      as: "items",
+    },
+  };
+  let joinStage2 = {
+    $lookup: {
+      from: "products",
+      localField: "items[0].productId",
+      foreignField: "_id",
+      as: "product",
+    },
+  };
+  let data = await DetailParentChildServices(
+    req,
+    PurchaseModel,
+    joinStage1,
+    joinStage2
+  );
   res.status(200).json(data);
 };

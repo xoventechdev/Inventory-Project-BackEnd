@@ -3,6 +3,7 @@ import { AuthVerified } from "../middlewares/AuthVerification.js";
 import {
   PurchaseCreate,
   PurchaseDelete,
+  PurchaseDetail,
   PurchaseList,
   PurchaseReport,
   PurchaseSummary,
@@ -19,5 +20,6 @@ PurchaseRoutes.get(
 PurchaseRoutes.delete("/delete/:id", AuthVerified, PurchaseDelete);
 PurchaseRoutes.post("/report", AuthVerified, PurchaseReport);
 PurchaseRoutes.get("/summary", AuthVerified, PurchaseSummary);
+PurchaseRoutes.get("/detail/:id", AuthVerified, PurchaseDetail);
 
 export default PurchaseRoutes;
