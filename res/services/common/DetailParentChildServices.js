@@ -11,23 +11,9 @@ export const DetailParentChildServices = async (
   try {
     const data = await model.aggregate([
       { $match: { userEmail: req.email, _id: new ObjectId(req.params.id) } },
-      {
-        $lookup: {
-          from: "purchases_items",
-          localField: "_id",
-          foreignField: "purchaseId",
-          as: "items",
-        },
-      },
+      joinStage1,
       { $unwind: "$items" },
-      {
-        $lookup: {
-          from: "products",
-          localField: "items.productId",
-          foreignField: "_id",
-          as: "items.product",
-        },
-      },
+      joinStage2,
       { $unwind: "$items.product" },
       {
         $group: {

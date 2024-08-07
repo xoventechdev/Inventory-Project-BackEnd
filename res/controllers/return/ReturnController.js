@@ -2,14 +2,24 @@ import { ReturnItemModel } from "../../models/return/ReturnItemModel.js";
 import { ReturnModel } from "../../models/return/ReturnModel.js";
 import { CreateParentChildServices } from "../../services/common/CreateParentChildServices.js";
 import { DeleteParentChildService } from "../../services/common/DeleteParentChildService.js";
-import { DetailService } from "../../services/common/DetailService.js";
+import { DetailParentChildServices } from "../../services/common/DetailParentChildServices.js";
 import { ListWithOneJoinService } from "../../services/common/ListWithOneJoinService.js";
 import { ReportService } from "../../services/common/ReportService.js";
-import { SummaryService } from "../../services/common/SummaryService.js";
+import { UpdateParentChildServices } from "../../services/common/UpdateParentChildServices.js";
 import { ReturnSummaryService } from "../../services/summary/ReturnSummaryService.js";
 
 export const ReturnCreate = async (req, res) => {
   let data = await CreateParentChildServices(
+    req,
+    ReturnModel,
+    ReturnItemModel,
+    "returnId"
+  );
+  res.status(200).json(data);
+};
+
+export const ReturnUpdate = async (req, res) => {
+  let data = await UpdateParentChildServices(
     req,
     ReturnModel,
     ReturnItemModel,
@@ -66,6 +76,27 @@ export const ReturnSummary = async (req, res) => {
 };
 
 export const ReturnDetail = async (req, res) => {
-  let data = await DetailService(req, ReturnModel);
+  let joinStage1 = {
+    $lookup: {
+      from: "return_item",
+      localField: "_id",
+      foreignField: "returnId",
+      as: "items",
+    },
+  };
+  let joinStage2 = {
+    $lookup: {
+      from: "products",
+      localField: "items[0].productId",
+      foreignField: "_id",
+      as: "product",
+    },
+  };
+  let data = await DetailParentChildServices(
+    req,
+    ReturnModel,
+    joinStage1,
+    joinStage2
+  );
   res.status(200).json(data);
 };
