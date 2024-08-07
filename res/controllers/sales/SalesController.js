@@ -80,7 +80,7 @@ export const SalesSummary = async (req, res) => {
 export const SalesDetail = async (req, res) => {
   let joinStage1 = {
     $lookup: {
-      from: "sales_item",
+      from: "sales_items",
       localField: "_id",
       foreignField: "salesId",
       as: "items",
@@ -89,9 +89,9 @@ export const SalesDetail = async (req, res) => {
   let joinStage2 = {
     $lookup: {
       from: "products",
-      localField: "items[0].productId",
+      localField: "items.productId",
       foreignField: "_id",
-      as: "product",
+      as: "items.product",
     },
   };
   let data = await DetailParentChildServices(

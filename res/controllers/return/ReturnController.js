@@ -78,7 +78,7 @@ export const ReturnSummary = async (req, res) => {
 export const ReturnDetail = async (req, res) => {
   let joinStage1 = {
     $lookup: {
-      from: "return_item",
+      from: "return_items",
       localField: "_id",
       foreignField: "returnId",
       as: "items",

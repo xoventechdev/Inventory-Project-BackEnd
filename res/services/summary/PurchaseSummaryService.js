@@ -1,39 +1,45 @@
 import { PurchaseModel } from "../../models/purchase/PurchaseModel.js";
+import { addDays, format, subDays } from "date-fns";
 
 export const PurchaseSummaryService = async (req) => {
   try {
+    const today = new Date();
+    const thirtyDaysAgo = subDays(today, 29);
     let data = await PurchaseModel.aggregate([
       {
         $match: {
           userEmail: req.email,
+          createdAt: { $gte: thirtyDaysAgo },
         },
       },
       {
-        $facet: {
-          total: [
-            {
-              $group: {
-                _id: 0,
-                total: { $sum: "$grandCost" },
-              },
-            },
-          ],
-          last30days: [
-            {
-              $group: {
-                _id: {
-                  $dateToString: { format: "%Y-%m-%d", date: "$createdAt" },
-                },
-                total: { $sum: "$grandCost" },
-              },
-            },
-            { $sort: { _id: -1 } },
-            { $limit: 30 },
-          ],
+        $group: {
+          _id: {
+            $dateToString: { format: "%Y-%m-%d", date: "$createdAt" },
+          },
+          total: { $sum: "$grandCost" },
         },
       },
+      { $sort: { _id: 1 } },
     ]);
-    return { status: "success", response: data };
+
+    let dateArray = [];
+    for (let i = 0; i < 30; i++) {
+      dateArray.push(format(addDays(thirtyDaysAgo, i), "yyyy-MM-dd"));
+    }
+
+    let mergedData = dateArray.map((date) => {
+      let found = data.find((d) => d._id === date);
+      return {
+        _id: date,
+        total: found ? found.total : 0,
+      };
+    });
+
+    return {
+      status: "success",
+      response: { total: data, last30days: mergedData },
+    };
   } catch (error) {
     return { status: "error", response: error.message };
   }

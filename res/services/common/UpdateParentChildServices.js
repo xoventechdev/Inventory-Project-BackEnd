@@ -28,14 +28,12 @@ export const UpdateParentChildServices = async (
 
     parent.userEmail = req.email;
 
-    // Update the parent document
     let parentUpdate = await parentModel.updateOne(
       { _id: id, userEmail: req.email },
       parent,
       { session }
     );
 
-    // If parent update fails, abort the transaction
     if (parentUpdate.nModified === 0) {
       await session.abortTransaction();
       session.endSession();
@@ -45,13 +43,11 @@ export const UpdateParentChildServices = async (
       };
     }
 
-    // Remove existing child documents related to the parent
     await childModel.deleteMany(
       { [joinProperty]: id, userEmail: req.email },
       { session }
     );
 
-    // Add the updated child documents
     child.forEach((element) => {
       element[joinProperty] = id;
       element.userEmail = req.email;

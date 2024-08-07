@@ -35,4 +35,4 @@ const returnItemSchema = new mongoose.Schema(
   }
 );
 
-export const ReturnItemModel = mongoose.model("return_item", returnItemSchema);
+export const ReturnItemModel = mongoose.model("return_items", returnItemSchema);

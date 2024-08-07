@@ -89,9 +89,9 @@ export const PurchaseDetail = async (req, res) => {
   let joinStage2 = {
     $lookup: {
       from: "products",
-      localField: "items[0].productId",
+      localField: "items.productId",
       foreignField: "_id",
-      as: "product",
+      as: "items.product",
     },
   };
   let data = await DetailParentChildServices(
