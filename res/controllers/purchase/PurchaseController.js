@@ -7,10 +7,21 @@ import { DetailService } from "../../services/common/DetailService.js";
 import { ListWithOneJoinService } from "../../services/common/ListWithOneJoinService.js";
 import { ReportService } from "../../services/common/ReportService.js";
 import { SummaryService } from "../../services/common/SummaryService.js";
+import { UpdateParentChildServices } from "../../services/common/UpdateParentChildServices.js";
 import { PurchaseSummaryService } from "../../services/summary/PurchaseSummaryService.js";
 
 export const PurchaseCreate = async (req, res) => {
   let data = await CreateParentChildServices(
+    req,
+    PurchaseModel,
+    PurchaseItemModel,
+    "purchaseId"
+  );
+  res.status(200).json(data);
+};
+
+export const PurchaseUpdate = async (req, res) => {
+  let data = await UpdateParentChildServices(
     req,
     PurchaseModel,
     PurchaseItemModel,

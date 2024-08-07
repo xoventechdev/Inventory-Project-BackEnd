@@ -7,11 +7,13 @@ import {
   PurchaseList,
   PurchaseReport,
   PurchaseSummary,
+  PurchaseUpdate,
 } from "../controllers/purchase/PurchaseController.js";
 
 const PurchaseRoutes = new Router();
 
 PurchaseRoutes.post("/create", AuthVerified, PurchaseCreate);
+PurchaseRoutes.post("/update/:id", AuthVerified, PurchaseUpdate);
 PurchaseRoutes.get(
   "/tableList/:pageNo/:perPage/:searchKeyword",
   AuthVerified,
