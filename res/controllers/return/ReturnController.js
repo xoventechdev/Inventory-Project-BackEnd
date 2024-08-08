@@ -85,11 +85,16 @@ export const ReturnDetail = async (req, res) => {
     },
   };
   let joinStage2 = {
-    $lookup: {
-      from: "products",
-      localField: "items[0].productId",
-      foreignField: "_id",
-      as: "product",
+    $group: {
+      _id: "$_id",
+      customerId: { $first: "$customerId" },
+      vatTax: { $first: "$vatTax" },
+      discount: { $first: "$discount" },
+      otherCost: { $first: "$otherCost" },
+      shippingCost: { $first: "$shippingCost" },
+      grandCost: { $first: "$grandCost" },
+      note: { $first: "$note" },
+      items: { $push: "$items" },
     },
   };
   let data = await DetailParentChildServices(
