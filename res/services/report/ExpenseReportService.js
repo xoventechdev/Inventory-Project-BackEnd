@@ -24,14 +24,14 @@ export const ExpenseReportService = async (req) => {
           ],
           data: [
             {
-              $lookup: {
-                from: "expense_types",
-                localField: "typeID",
-                foreignField: "_id",
-                as: "types",
+              $group: {
+                _id: {
+                  $dateToString: { format: "%Y-%m-%d", date: "$createdAt" },
+                },
+                total: { $sum: "$amount" },
               },
             },
-            { $unwind: "$types" },
+            { $sort: { _id: 1 } },
           ],
         },
       },
