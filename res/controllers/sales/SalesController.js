@@ -8,6 +8,7 @@ import { ListWithOneJoinService } from "../../services/common/ListWithOneJoinSer
 import { ReportService } from "../../services/common/ReportService.js";
 import { SummaryService } from "../../services/common/SummaryService.js";
 import { UpdateParentChildServices } from "../../services/common/UpdateParentChildServices.js";
+import { SalesReportService } from "../../services/report/SalesReportService.js";
 import { SalesSummaryService } from "../../services/summary/SalesSummaryService.js";
 
 export const SalesCreate = async (req, res) => {
@@ -68,7 +69,7 @@ export const SalesDelete = async (req, res) => {
 };
 
 export const SalesReport = async (req, res) => {
-  let data = await ReportService(req, SalesItemModel);
+  let data = await SalesReportService(req);
   res.status(200).json(data);
 };
 
